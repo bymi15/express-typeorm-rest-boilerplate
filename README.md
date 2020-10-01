@@ -1,8 +1,14 @@
 <h1 align="center">Express TypeORM REST API Boilerplate</h1>
 
 <p align="center">
+  <a href="https://david-dm.org/bymi15/express-typeorm-rest-boilerplate" title="dependencies status">
+    <img src="https://david-dm.org/bymi15/express-typeorm-rest-boilerplate/status.svg?style=flat-square"/>
+  </a>
   <a href="https://travis-ci.com/github/bymi15/express-typeorm-rest-boilerplate">
     <img src="https://api.travis-ci.com/bymi15/express-typeorm-rest-boilerplate.svg?branch=main" alt="travis" />
+  </a>
+  <a href="https://stackshare.io/bymi15/express-typeorm-rest-boilerplate">
+    <img src="http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat" alt="stackshare" />
   </a>
 </p>
 
