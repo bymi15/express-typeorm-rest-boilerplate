@@ -6,7 +6,7 @@ import * as faker from 'faker';
 import userSeed from '../../src/database/seeds/userSeed';
 import { Connection } from 'typeorm';
 import Logger from '../../src/logger';
-jest.mock('../../../src/logger');
+jest.mock('../../src/logger');
 
 describe('UserService', () => {
   let connection: Connection;
