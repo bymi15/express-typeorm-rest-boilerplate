@@ -1,5 +1,5 @@
 {
-  "name": "express-typeorm-rest-boilerplate",
+  "name": "@bymi15/express-typeorm-rest-boilerplate",
   "version": "0.0.1",
   "description": "Boilerplate code to get started with building RESTful API Services",
   "main": "build/app.js",
@@ -15,7 +15,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bymi15/express-typeorm-rest-boilerplate.git"
+    "url": "git://github.com/bymi15/express-typeorm-rest-boilerplate.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/bymi15"
   },
   "keywords": [
     "express-typeorm-rest-boilerplate",
