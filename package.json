@@ -11,6 +11,7 @@
     "mongodb": "mkdirp .mongodb && mongod --dbpath .mongodb",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "test:unix": "NODE_ENV=test jest",
     "test": "set NODE_ENV=test&jest"
   },
   "repository": {
