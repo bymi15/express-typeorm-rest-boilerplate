@@ -1,6 +1,12 @@
 <h1 align="center">Express TypeORM REST API Boilerplate</h1>
 
 <p align="center">
+  <a href="https://travis-ci.com/github/bymi15/express-typeorm-rest-boilerplate">
+    <img src="https://api.travis-ci.com/bymi15/express-typeorm-rest-boilerplate.svg?branch=main" alt="travis" />
+  </a>
+</p>
+
+<p align="center">
   <b>Awesome boilerplate code to get started with building RESTful API Services!</b></br>
   <span>Comes with JWT User Authentication, MongoDB integration with <a href="https://github.com/typeorm/typeorm">TypeORM</a>, </span></br>
   <span>dependency injections with <a href="https://github.com/typestack/typedi">TypeDI</a>, and a sample unit test with <a href="https://jestjs.io/">Jest</a></span></br>
