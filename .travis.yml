@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - '11.14.0'
+install:
+  - npm install
+env:
+  - JWT_SECRET="2A5DPwUM6QOvlwzs4HPsbbOHCWVFRfFQ" MONGODB_URI="mongodb://127.0.0.1/express-typeorm-rest-boilerplate" MONGODB_TEST_URI="mongodb://127.0.0.1/express-typeorm-rest-boilerplate-test" LOG_LEVEL="debug" PORT=3000
+before_script:
+  - npm run mongodb
+script:
+  - npm run test
+  - npm run build
+notifications:
+  email: false
