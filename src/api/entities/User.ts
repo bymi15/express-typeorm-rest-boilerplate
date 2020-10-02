@@ -1,5 +1,5 @@
 import { Entity, ObjectIdColumn, ObjectID, Column, Index } from 'typeorm';
-import { IsEmail, IsString, IsAlpha } from 'class-validator';
+import { IsEmail, IsString } from 'class-validator';
 
 @Entity()
 export class User {
@@ -7,11 +7,11 @@ export class User {
   id?: ObjectID;
 
   @Column()
-  @IsAlpha()
+  @IsString()
   firstName?: string;
 
   @Column()
-  @IsAlpha()
+  @IsString()
   lastName?: string;
 
   @Column()

@@ -8,6 +8,31 @@ declare global {
       token: Token;
     }
   }
+}
 
-  export type Token = jwt.Options;
+export type Token = jwt.Options;
+
+export interface IUserInputDTO {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
+export interface IUserResponseDTO {
+  user: User;
+  token: string;
+}
+
+export interface ICompanyInputDTO {
+  name: string;
+  description: string;
+  logo: string;
+  website: string;
+  headquarters: {
+    city: string;
+    country: string;
+  };
+  industry: string;
+  foundedYear: string;
 }

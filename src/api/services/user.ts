@@ -6,7 +6,7 @@ import { User } from '../entities/User';
 import { MongoRepository } from 'typeorm';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import { Logger } from 'winston';
-import { IUserInputDTO, IUserTokenObject } from '../../types/auth';
+import { IUserInputDTO, IUserResponseDTO } from '../../types';
 import { validate } from 'class-validator';
 
 @Service()
@@ -22,7 +22,7 @@ export default class UserService {
     return this.userRepo;
   }
 
-  async register(userInputDTO: IUserInputDTO): Promise<IUserTokenObject> {
+  async register(userInputDTO: IUserInputDTO): Promise<IUserResponseDTO> {
     this.logger.debug('Registering user...');
     const hashedPassword = await bcrypt.hash(userInputDTO.password, 12);
     const newUser = new User({
@@ -48,7 +48,7 @@ export default class UserService {
     return { user, token };
   }
 
-  async login(email: string, password: string): Promise<IUserTokenObject> {
+  async login(email: string, password: string): Promise<IUserResponseDTO> {
     this.logger.debug('Authenticating user...');
     const userRecord = await this.userRepo.findOne({ email });
     if (!userRecord) throw new Error('Invalid email or password');
