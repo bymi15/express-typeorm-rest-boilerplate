@@ -23,3 +23,16 @@ export interface IUserResponseDTO {
   user: User;
   token: string;
 }
+
+export interface ICompanyInputDTO {
+  name: string;
+  description: string;
+  logo: string;
+  website: string;
+  headquarters: {
+    city: string;
+    country: string;
+  };
+  industry: string;
+  foundedYear: string;
+}
