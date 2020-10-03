@@ -8,15 +8,18 @@ import { InjectRepository } from 'typeorm-typedi-extensions';
 import { Logger } from 'winston';
 import { IUserInputDTO, IUserResponseDTO } from '../../types';
 import { validate } from 'class-validator';
+import CRUD from './CRUD';
 
 @Service()
-export default class UserService {
+export default class UserService extends CRUD<User> {
   constructor(
     @InjectRepository(User)
-    private userRepo: MongoRepository<User>,
+    protected userRepo: MongoRepository<User>,
     @Inject('logger')
-    private logger: Logger
-  ) {}
+    protected logger: Logger
+  ) {
+    super(userRepo, logger);
+  }
 
   getRepo(): MongoRepository<User> {
     return this.userRepo;
