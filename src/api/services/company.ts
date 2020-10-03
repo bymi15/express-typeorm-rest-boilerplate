@@ -3,7 +3,6 @@ import { Company } from '../entities/Company';
 import { MongoRepository } from 'typeorm';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import { Logger } from 'winston';
-import { validate } from 'class-validator';
 import CRUD from './CRUD';
 
 @Service()
