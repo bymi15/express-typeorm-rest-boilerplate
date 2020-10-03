@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.2...v0.0.3) (2020-10-03)
+
+
+### Features
+
+* **CRUD:** add and integrate generic CRUD service ([e6233b3](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/e6233b33a3b5dfc0e429ffa6218793c10ad45708))
+* **CRUD.spec.ts:** add CRUD service integration test ([8848538](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/8848538c8c50901909f57d40cccee4bbec3241ac))
+* **EntitySeed:** add generic entity seeder ([0429230](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/0429230aad24c20e3a1538653f0d644e65211203))
+* **issues:** update issue templates ([7c26510](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/7c265109002279a4930644d1e6cf765b254c54c4))
+* **test:** update company and user tests ([32b2b8a](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/32b2b8a61f05473b509c6c25fb565228a626ba7e))
+* **types:** add generic factory type ([5242ff8](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/5242ff8ee659490b9fc19d4e7d5be80e40d98a56))
+
+
+### Bug Fixes
+
+* **database:** rename case-sensitive ([223a854](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/223a854ac229cec128e18ad7ca6b00dafcb610fd))
+
 ### [0.0.2](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.1...v0.0.2) (2020-10-02)
 
 
