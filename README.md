@@ -14,8 +14,8 @@
 
 <p align="center">
   <b>Awesome boilerplate code to get started with building RESTful API Services!</b></br>
-  <span>Comes with JWT User Authentication, MongoDB integration with <a href="https://github.com/typeorm/typeorm">TypeORM</a>, </span></br>
-  <span>dependency injections with <a href="https://github.com/typestack/typedi">TypeDI</a>, and a sample unit test with <a href="https://jestjs.io/">Jest</a></span></br>
+  <span>Comes with <b>JWT</b> User Authentication, <b>MongoDB</b> integration with <a href="https://github.com/typeorm/typeorm">TypeORM</a>, </span></br>
+  <span>dependency injections with <a href="https://github.com/typestack/typedi">TypeDI</a>, and sample tests with <a href="https://jestjs.io/">Jest</a></span></br>
   <sub>Made with ❤️ by <a href="https://github.com/bymi15">Brian Min</a></sub>
 </p>
 
