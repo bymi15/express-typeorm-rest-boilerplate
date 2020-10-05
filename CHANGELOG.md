@@ -1,3 +1,11 @@
+## [0.1.1](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.1.0...v0.1.1) (2020-10-05)
+
+
+### Bug Fixes
+
+* **build:** fix running compiled app by adding ormconfig for dist ([811423f](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/811423fe2b179812176a4864e7ae4378cedc9d1d))
+* **package.json:** fix test env variable for ormconfig in build ([308fd37](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/308fd3755119634620e6f732011c33c82dd44540))
+
 # [0.1.0](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.4...v0.1.0) (2020-10-05)
 
 
