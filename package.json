@@ -1,6 +1,6 @@
 {
   "name": "express-typeorm-rest-boilerplate",
-  "version": "0.0.0-development",
+  "version": "0.1.0",
   "description": "Boilerplate code to get started with building RESTful API Services",
   "main": "build/app.js",
   "scripts": {

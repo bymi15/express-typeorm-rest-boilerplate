@@ -1,3 +1,15 @@
+# [0.1.0](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.4...v0.1.0) (2020-10-05)
+
+
+### Bug Fixes
+
+* **.releaserc:** fix semantic-release branch was set to master instead of main ([5a752c5](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/5a752c5f5d0b0e80025d0549cf48fd42b7017bcd))
+
+
+### Features
+
+* **package.json:** add husky and commitlint ([7946e6a](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/7946e6a57dc5e790e38c72709e0eebaf0523bde6))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
