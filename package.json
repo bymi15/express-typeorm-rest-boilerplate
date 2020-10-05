@@ -1,20 +1,20 @@
 {
-  "name": "@bymi15/express-typeorm-rest-boilerplate",
-  "version": "0.0.4",
+  "name": "express-typeorm-rest-boilerplate",
+  "version": "0.0.0-development",
   "description": "Boilerplate code to get started with building RESTful API Services",
   "main": "build/app.js",
   "scripts": {
     "start": "node build/app.js",
     "build": "tsc -p .",
     "dev": "nodemon -V --exec ts-node src/app.ts",
-    "release": "standard-version",
     "mongodb": "mkdirp .mongodb && mongod --dbpath .mongodb",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test:unix": "NODE_ENV=test jest",
     "test": "set NODE_ENV=test&jest",
     "seed": "ts-node -T commands/seed.ts",
-    "generate": "ts-node -T commands/generate.ts"
+    "generate": "ts-node -T commands/generate.ts",
+    "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -23,10 +23,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bymi15/express-typeorm-rest-boilerplate.git"
+    "url": "https://github.com/bymi15/express-typeorm-rest-boilerplate.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/bymi15"
+    "registry": "https://registry.npmjs.com/"
   },
   "keywords": [
     "express-typeorm-rest-boilerplate",
@@ -71,6 +71,8 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@types/bcrypt": "^3.0.0",
     "@types/body-parser": "^1.19.0",
     "@types/cors": "^2.8.7",
@@ -94,7 +96,7 @@
     "nodemon": "^2.0.4",
     "pluralize": "^8.0.0",
     "prettier": "^2.1.2",
-    "standard-version": "^9.0.0",
+    "semantic-release": "^17.1.2",
     "ts-jest": "^26.4.0",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
