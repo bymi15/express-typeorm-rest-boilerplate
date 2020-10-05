@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Container } from 'typedi';
 import { celebrate, Joi } from 'celebrate';
-import UserService from '../services/user';
+import UserService from '../services/UserService';
 import { Logger } from 'winston';
 
 const route = Router();

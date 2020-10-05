@@ -2,7 +2,7 @@ import { Container } from 'typedi';
 import { Logger } from 'winston';
 import { Response, NextFunction, Request } from 'express';
 import { User } from '../entities/User';
-import UserService from '../services/user';
+import UserService from '../services/UserService';
 
 const attachUser = async (
   req: Request,

@@ -1,5 +1,5 @@
 import { Container } from 'typedi';
-import CompanyService from '../../src/api/services/company';
+import CompanyService from '../../src/api/services/CompanyService';
 import databaseLoader from '../../src/loaders/database';
 import { Connection } from 'typeorm';
 import Logger from '../../src/logger';

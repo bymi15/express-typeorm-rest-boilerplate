@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.3...v0.0.4) (2020-10-05)
+
+
+### Features
+
+* **commands:** add seed command ([8d282da](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/8d282daae3edd8ac724f3499d9bb8c7e8110de05))
+* **companyRoute:** add delete and update endpoints ([70b3d93](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/70b3d93474054085c1fa000cfb25ce5f21aad093))
+* **Generator:** add generate command ([e00b2b5](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/e00b2b5db269d5596ea599ea005c04455a95511c))
+
 ### [0.0.3](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.2...v0.0.3) (2020-10-03)
 
 

@@ -1,6 +1,6 @@
 import { Container } from 'typedi';
 import { IUserInputDTO, IUserResponseDTO } from '../../src/types';
-import UserService from '../../src/api/services/user';
+import UserService from '../../src/api/services/UserService';
 import databaseLoader from '../../src/loaders/database';
 import * as faker from 'faker';
 import { Connection } from 'typeorm';

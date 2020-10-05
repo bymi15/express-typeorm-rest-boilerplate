@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Container } from 'typedi';
 import { celebrate, Joi } from 'celebrate';
-import CompanyService from '../services/company';
+import CompanyService from '../services/CompanyService';
 import { Logger } from 'winston';
 import { Company } from '../entities/Company';
 import { isAuth } from '../middlewares';
@@ -33,6 +33,22 @@ route.get('/:id', isAuth, async (req, res, next) => {
   }
 });
 
+route.delete('/:id', isAuth, async (req, res, next) => {
+  const companyId = req.params.id;
+  const logger: Logger = Container.get('logger');
+  logger.debug(
+    'Calling DELETE to /company/:id endpoint with id: %s',
+    companyId
+  );
+  try {
+    const companyServiceInstance = Container.get(CompanyService);
+    await companyServiceInstance.delete(companyId);
+    return res.json({}).status(204);
+  } catch (e) {
+    return next(e);
+  }
+});
+
 route.post(
   '/',
   isAuth,
@@ -59,6 +75,43 @@ route.post(
         new Company(req.body)
       );
       return res.status(201).json({ company });
+    } catch (e) {
+      return next(e);
+    }
+  }
+);
+
+route.put(
+  '/:id',
+  isAuth,
+  celebrate({
+    body: Joi.object({
+      name: Joi.string(),
+      description: Joi.string(),
+      logo: Joi.string(),
+      website: Joi.string(),
+      headquarters: Joi.object({
+        city: Joi.string().required(),
+        country: Joi.string().required(),
+      }),
+      industry: Joi.string(),
+      foundedYear: Joi.string(),
+    }),
+  }),
+  async (req, res, next) => {
+    const companyId = req.params.id;
+    const logger: Logger = Container.get('logger');
+    logger.debug(
+      'Calling PUT to /company/:id endpoint with body: %o',
+      req.body
+    );
+    try {
+      const companyServiceInstance = Container.get(CompanyService);
+      const company = await companyServiceInstance.update(
+        companyId,
+        new Company(req.body)
+      );
+      return res.status(200).json({ company });
     } catch (e) {
       return next(e);
     }
