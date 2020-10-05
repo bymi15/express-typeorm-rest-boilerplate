@@ -1,7 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const config = require('./src/config').default;
+/* eslint-disable @typescript-eslint/no-var-requires */
+const config = process.env.TS_NODE
+  ? require('./src/config').default
+  : require('./dist/config').default;
 
-module.exports = {
+const srcConfig = {
   type: 'mongodb',
   url: config.databaseURL,
   useNewUrlParser: true,
@@ -13,3 +15,18 @@ module.exports = {
     entitiesDir: 'src/api/entities',
   },
 };
+
+const distConfig = {
+  type: 'mongodb',
+  url: config.databaseURL,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  synchronize: false,
+  logging: false,
+  entities: ['dist/api/entities/**/*.js'],
+  cli: {
+    entitiesDir: 'dist/api/entities',
+  },
+};
+
+module.exports = process.env.TS_NODE ? srcConfig : distConfig;

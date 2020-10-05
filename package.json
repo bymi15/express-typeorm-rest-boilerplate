@@ -2,9 +2,9 @@
   "name": "express-typeorm-rest-boilerplate",
   "version": "0.1.0",
   "description": "Boilerplate code to get started with building RESTful API Services",
-  "main": "build/app.js",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "node build/app.js",
+    "start": "node dist/app.js",
     "build": "tsc -p .",
     "dev": "nodemon -V --exec ts-node src/app.ts",
     "mongodb": "mkdirp .mongodb && mongod --dbpath .mongodb",
