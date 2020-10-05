@@ -4,13 +4,15 @@ node_js:
 install:
   - npm install
 env:
-  - JWT_SECRET="2A5DPwUM6QOvlwzs4HPsbbOHCWVFRfFQ" MONGODB_URI="mongodb://127.0.0.1/express-typeorm-rest-boilerplate" MONGODB_TEST_URI="mongodb://127.0.0.1/express-typeorm-rest-boilerplate-test" LOG_LEVEL="debug" PORT=3000
+  - MONGODB_URI="mongodb://127.0.0.1/express-typeorm-rest-boilerplate" MONGODB_TEST_URI="mongodb://127.0.0.1/express-typeorm-rest-boilerplate-test" LOG_LEVEL="debug" PORT=3000
 services:
   - mongodb
 before_script:
   - sleep 10
 script:
+  - npm run lint
   - npm run test:unix
   - npm run build
+  - npm run semantic-release
 notifications:
   email: false
