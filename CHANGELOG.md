@@ -10,11 +10,8 @@
 
 * **package.json:** add husky and commitlint ([7946e6a](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/7946e6a57dc5e790e38c72709e0eebaf0523bde6))
 
-# Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
-### [0.0.4](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.3...v0.0.4) (2020-10-05)
+# [0.0.4](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.3...v0.0.4) (2020-10-05)
 
 
 ### Features
@@ -23,7 +20,13 @@ All notable changes to this project will be documented in this file. See [standa
 * **companyRoute:** add delete and update endpoints ([70b3d93](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/70b3d93474054085c1fa000cfb25ce5f21aad093))
 * **Generator:** add generate command ([e00b2b5](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/e00b2b5db269d5596ea599ea005c04455a95511c))
 
-### [0.0.3](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.2...v0.0.3) (2020-10-03)
+
+# [0.0.3](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.2...v0.0.3) (2020-10-03)
+
+
+### Bug Fixes
+
+* **database:** rename case-sensitive ([223a854](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/223a854ac229cec128e18ad7ca6b00dafcb610fd))
 
 
 ### Features
@@ -36,11 +39,14 @@ All notable changes to this project will be documented in this file. See [standa
 * **types:** add generic factory type ([5242ff8](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/5242ff8ee659490b9fc19d4e7d5be80e40d98a56))
 
 
+# [0.0.2](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.1...v0.0.2) (2020-10-02)
+
+
 ### Bug Fixes
 
-* **database:** rename case-sensitive ([223a854](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/223a854ac229cec128e18ad7ca6b00dafcb610fd))
-
-### [0.0.2](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.0.1...v0.0.2) (2020-10-02)
+* **config:** remove .env check ([bd47140](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/bd47140a762cd591e93b935e8808c4bae7a8e7d8))
+* **tests:** fix userService jest mock logger path ([6fced9f](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/6fced9fa0b199319a9c12e30cd0e4983ec938919))
+* update travis config and package.json for ci ([86795fc](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/86795fc9d6e1522b03da0cf17e37f44c57acd1dd))
 
 
 ### Features
@@ -55,13 +61,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **types:** add ICompanyInputDTO interface ([396fabf](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/396fabfb55e80e68057ff84d0242d652473e0e93))
 
 
-### Bug Fixes
-
-* **config:** remove .env check ([bd47140](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/bd47140a762cd591e93b935e8808c4bae7a8e7d8))
-* **tests:** fix userService jest mock logger path ([6fced9f](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/6fced9fa0b199319a9c12e30cd0e4983ec938919))
-* update travis config and package.json for ci ([86795fc](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/86795fc9d6e1522b03da0cf17e37f44c57acd1dd))
-
-### 0.0.1 (2020-10-01)
+# 0.0.1 (2020-10-01)
 
 
 ### Features
