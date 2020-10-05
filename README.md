@@ -40,6 +40,7 @@ Try it out and feel free to raise any issues or create pull requests if you woul
 - **Unit and Integration Testing** with [Jest](https://jestjs.io/).
 - **Security Features** with [Helmet](https://helmetjs.github.io/).
 - **Simple Data Seeding** with custom-built factories and [Faker.js](https://www.npmjs.com/package/faker).
+- **Code generator for entity, service, route, factory, seed, test** with a custom-built generator script and CLI tool [Commander](https://github.com/tj/commander.js/).
 
 ## Getting Started
 
@@ -97,8 +98,7 @@ npm run dev
 
 ### Tests
 
-- Run unit tests using `npm run test`.
-- If you're NOT using Windows, make sure you change the `test` script in `package.json` to set `NODE_ENV` to `test` before running `jest`.
+- Run unit tests using `npm run test` (for Windows users) or `npm run test:unix` (for Mac and Linux users).
 
 ### Running the app in development
 
@@ -127,6 +127,7 @@ The route prefix is `/api` by default, but you can change this in the .env file.
 | -------------------------- | ------------------------------------------------------------ |
 | **.mongodb/**              | Local MongoDB server data                                    |
 | **build/**                 | Compiled source files will be placed here                    |
+| **commands/**              | Custom CLI command tools used with npm scripts               |
 | **src/**                   | Source files                                                 |
 | **src/api/middlewares/**   | Custom middlewares                                           |
 | **src/api/entities/**      | TypeORM Entities (Database models)                           |
