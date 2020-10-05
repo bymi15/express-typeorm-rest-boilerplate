@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test:unix": "NODE_ENV=test jest",
-    "test": "set NODE_ENV=test&jest"
+    "test": "set NODE_ENV=test&jest",
+    "seed": "ts-node -T commands/seed.ts"
   },
   "repository": {
     "type": "git",
