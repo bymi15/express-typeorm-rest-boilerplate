@@ -14,7 +14,7 @@ route.get('/', isAuth, async (req, res, next) => {
   try {
     const companyServiceInstance = Container.get(CompanyService);
     const companies = await companyServiceInstance.find();
-    return res.json({ companies }).status(200);
+    return res.json(companies).status(200);
   } catch (e) {
     return next(e);
   }
@@ -27,7 +27,7 @@ route.get('/:id', isAuth, async (req, res, next) => {
   try {
     const companyServiceInstance = Container.get(CompanyService);
     const company = await companyServiceInstance.findOne(companyId);
-    return res.json({ company }).status(200);
+    return res.json(company).status(200);
   } catch (e) {
     return next(e);
   }
@@ -74,7 +74,7 @@ route.post(
       const company = await companyServiceInstance.create(
         new Company(req.body)
       );
-      return res.status(201).json({ company });
+      return res.status(201).json(company);
     } catch (e) {
       return next(e);
     }
@@ -111,7 +111,7 @@ route.put(
         companyId,
         new Company(req.body)
       );
-      return res.status(200).json({ company });
+      return res.status(200).json(company);
     } catch (e) {
       return next(e);
     }
