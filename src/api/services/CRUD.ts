@@ -17,14 +17,16 @@ export default class CRUD<Entity> {
     return this.repo;
   }
 
-  async create(entity: Entity, identifier: string): Promise<Entity> {
+  async create(entity: Entity, identifier?: string): Promise<Entity> {
     const errors = await validate(entity, {
       validationError: { target: false },
     });
-    const foundCompany = await this.repo.findOne({
-      [identifier]: entity[identifier],
-    });
-    if (foundCompany)
+    const foundEntity =
+      identifier &&
+      (await this.repo.findOne({
+        [identifier]: entity[identifier],
+      }));
+    if (foundEntity)
       throw new Error(`The ${entity.constructor.name} already exists`);
 
     if (errors.length > 0) throw errors;
