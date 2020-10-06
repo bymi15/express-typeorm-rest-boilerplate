@@ -13,7 +13,7 @@ describe('CRUD', () => {
   let connection: Connection;
   let entitySeed: EntitySeed<Company>;
   let crudInstance: CRUD<Company>;
-  beforeAll(async (done) => {
+  beforeAll(async () => {
     Container.reset();
     connection = await databaseLoader();
     await connection.synchronize(true);
@@ -23,19 +23,16 @@ describe('CRUD', () => {
     );
     Container.set('logger', Logger);
     crudInstance = new CRUD(Container.get(CompanyService).getRepo(), Logger);
-    done();
   });
 
-  beforeEach(async (done) => {
+  beforeEach(async () => {
     await connection.dropDatabase();
-    done();
   });
 
-  afterAll(async (done) => {
+  afterAll(async () => {
     if (connection.isConnected) {
       await connection.close();
     }
-    done();
   });
 
   describe('create', () => {
@@ -69,6 +66,7 @@ describe('CRUD', () => {
       const response = await crudInstance.find();
 
       expect(response).toBeDefined();
+      expect(response.length).toEqual(5);
       expect(response.sort()).toEqual(mockCompanies.sort());
     });
   });
