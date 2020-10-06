@@ -14,7 +14,7 @@ describe('UserService', () => {
   let connection: Connection;
   let userSeed: EntitySeeder<User>;
   let userServiceInstance: UserService;
-  beforeAll(async (done) => {
+  beforeAll(async () => {
     Container.reset();
     connection = await databaseLoader();
     await connection.synchronize(true);
@@ -24,19 +24,16 @@ describe('UserService', () => {
     );
     Container.set('logger', Logger);
     userServiceInstance = Container.get(UserService);
-    done();
   });
 
-  beforeEach(async (done) => {
+  beforeEach(async () => {
     await connection.dropDatabase();
-    done();
   });
 
-  afterAll(async (done) => {
+  afterAll(async () => {
     if (connection.isConnected) {
       await connection.close();
     }
-    done();
   });
 
   describe('register', () => {
@@ -64,7 +61,6 @@ describe('UserService', () => {
         email: mockUser.email,
         password: faker.random.word(),
       };
-
       let err: Error, response: IUserResponseDTO;
       try {
         response = await userServiceInstance.register(mockUserInput);

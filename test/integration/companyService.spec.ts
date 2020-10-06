@@ -12,7 +12,7 @@ describe('CompanyService', () => {
   let connection: Connection;
   let companySeed: EntitySeed<Company>;
   let companyServiceInstance: CompanyService;
-  beforeAll(async (done) => {
+  beforeAll(async () => {
     Container.reset();
     connection = await databaseLoader();
     await connection.synchronize(true);
@@ -22,19 +22,16 @@ describe('CompanyService', () => {
     );
     Container.set('logger', Logger);
     companyServiceInstance = Container.get(CompanyService);
-    done();
   });
 
-  beforeEach(async (done) => {
+  beforeEach(async () => {
     await connection.dropDatabase();
-    done();
   });
 
-  afterAll(async (done) => {
+  afterAll(async () => {
     if (connection.isConnected) {
       await connection.close();
     }
-    done();
   });
 
   describe('create', () => {

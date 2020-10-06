@@ -309,7 +309,10 @@ export default class Generator {
       '    } catch (e) {\n' +
       '      return next(e);\n' +
       '    }\n' +
-      '  });\n'
+      '  }\n' +
+      ');\n' +
+      '\n' +
+      'export default route;\n'
     );
   };
 

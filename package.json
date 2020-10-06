@@ -10,8 +10,8 @@
     "mongodb": "mkdirp .mongodb && mongod --dbpath .mongodb",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test:unix": "NODE_ENV=test TS_NODE=true jest",
-    "test": "set NODE_ENV=test&set TS_NODE=true&jest",
+    "test:unix": "NODE_ENV=test TS_NODE=true jest --runInBand",
+    "test": "set NODE_ENV=test&set TS_NODE=true&jest --runInBand",
     "seed": "ts-node -T commands/seed.ts",
     "generate": "ts-node -T commands/generate.ts",
     "semantic-release": "semantic-release"

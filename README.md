@@ -14,8 +14,9 @@
 
 <p align="center">
   <b>Awesome boilerplate code to get started with building RESTful API Services!</b></br>
-  <span>Comes with <b>JWT</b> User Authentication, <b>MongoDB</b> integration with <a href="https://github.com/typeorm/typeorm">TypeORM</a>, </span></br>
-  <span>dependency injections with <a href="https://github.com/typestack/typedi">TypeDI</a>, and sample tests with <a href="https://jestjs.io/">Jest</a></span></br>
+  <span><a href="https://www.typescriptlang.org/">Typescript</a> with <a href="https://nodejs.org/">NodeJS</a> and <a href="https://expressjs.com/">Express</a> as well as <a href="https://www.mongodb.com/">MongoDB</a> integration with <a href="https://github.com/typeorm/typeorm">TypeORM</a></br>
+  <b>JSON Web Tokens (JWT)</b> based User Authentication,</span></br>
+  <a href="https://github.com/typestack/typedi">TypeDI</a><span> dependency injections, testing with <a href="https://jestjs.io/">Jest</a>, and a bunch more.</span></br>
   <sub>Made with ❤️ by <a href="https://github.com/bymi15">Brian Min</a></sub>
 </p>
 
@@ -39,6 +40,7 @@ Try it out and feel free to raise any issues or create pull requests if you woul
 - **Validation** thanks to [class-validator](https://github.com/typestack/class-validator).
 - **Unit and Integration Testing** with [Jest](https://jestjs.io/).
 - **Security Features** with [Helmet](https://helmetjs.github.io/).
+- **Role-based access control** using a custom-built middleware.
 - **Simple Data Seeding** with custom-built factories and [Faker.js](https://www.npmjs.com/package/faker).
 - **Code generator for entity, service, route, factory, seed, test** with a custom-built generator script and CLI tool [Commander](https://github.com/tj/commander.js/).
 
@@ -114,12 +116,17 @@ npm run dev
 
 The route prefix is `/api` by default, but you can change this in the .env file.
 
-| Route                  | Description                                              |
-| ---------------------- | -------------------------------------------------------- |
-| **/api**               | Base endpoint                                            |
-| **/api/auth/login**    | Auth - login endpoint                                    |
-| **/api/auth/register** | Auth - register endpoint                                 |
-| **/api/user**          | Example entity endpoint - returns current logged in user |
+| Route                   | Description                                              |
+| ----------------------- | -------------------------------------------------------- |
+| **/api**                | Base endpoint                                            |
+| **/api/auth/login**     | Auth - login endpoint                                    |
+| **/api/auth/register**  | Auth - register endpoint                                 |
+| **/api/user**           | Example entity endpoint - returns all users              |
+| **/api/user/current**   | Example entity endpoint - returns current logged in user |
+| **/api/company**        | Example entity endpoint - returns all companies          |
+| **/api/company/:id**    | Example entity endpoint - returns a company by id        |
+| **/api/jobApplication** | Example entity endpoint - returns all job applications   |
+| ...                     | ...                                                      |
 
 ## Project Structure
 
@@ -137,7 +144,7 @@ The route prefix is `/api` by default, but you can change this in the .env file.
 | **src/database/seeds**     | Seeds use factories to save mock data in the database        |
 | **src/loaders/**           | Loader is where the app is configured and database is loaded |
 | **src/types/** \*.d.ts     | Custom type definitions                                      |
-| **tests** \*.spec.ts       | Unit and integration tests                                   |
+| **test** \*.spec.ts        | Unit and integration tests                                   |
 | .env.example               | Environment configurations                                   |
 
 ## Logging

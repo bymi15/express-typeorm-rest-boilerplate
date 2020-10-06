@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const config = process.env.TS_NODE
-  ? require('./src/config').default
-  : require('./dist/config').default;
+const config =
+  process.env.NODE_ENV === 'production'
+    ? require('./dist/config').default
+    : require('./src/config').default;
 
 const srcConfig = {
   type: 'mongodb',
@@ -29,4 +30,4 @@ const distConfig = {
   },
 };
 
-module.exports = process.env.TS_NODE ? srcConfig : distConfig;
+module.exports = process.env.NODE_ENV === 'production' ? distConfig : srcConfig;

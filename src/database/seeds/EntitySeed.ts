@@ -16,10 +16,10 @@ export default class EntitySeed<Entity> {
     return ent;
   }
 
-  public async seedMany(amount: number): Promise<Entity[]> {
+  public async seedMany(amount: number, data?: Entity): Promise<Entity[]> {
     const res: Entity[] = [];
     for (let i = 0; i < amount; i++) {
-      res[i] = await this.factory();
+      res[i] = await this.factory(data);
       await this.repo.save(res[i]);
     }
     return res;
