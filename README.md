@@ -10,6 +10,9 @@
   <a href="https://stackshare.io/bymi15/express-typeorm-rest-boilerplate">
     <img src="http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat" alt="stackshare" />
   </a>
+  <a href="https://www.npmjs.com/package/express-typeorm-rest-boilerplate">
+    <img src="https://img.shields.io/npm/v/express-typeorm-rest-boilerplate?color=brightgreen&style=flat-squaret" alt="npm" />
+  </a>
 </p>
 
 <p align="center">
