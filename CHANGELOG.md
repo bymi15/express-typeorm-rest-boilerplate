@@ -1,3 +1,22 @@
+# [0.2.0](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.1.1...v0.2.0) (2020-10-06)
+
+
+### Bug Fixes
+
+* **companyroute:** refactor response json format ([d9dd2bd](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/d9dd2bd7e0ee2baba8fafa9785b0c79432196628))
+* **CRUD:** make identifier optional in create function ([7b6e584](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/7b6e5849b5f617d057d8a4f634635f36fbc30891))
+* **generator:** refactor route code generator response json format ([5026a5f](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/5026a5fe53b86848bac01037899271553868c6dd))
+* **middlewares:** add checkRole to middleware index ([f9813b6](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/f9813b694cb008a2e1b3a169f42a0cecacbd6695))
+* **middlewares:** refactor attachUser to use UserService findOne ([9249b5a](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/9249b5af27b1c016f84b2959c0c4b03613c8dd55))
+
+
+### Features
+
+* **middlewares:** add checkRole middleware ([0f0bd5b](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/0f0bd5bb961ad1b6f525a6e14c0a0e44fc86c748))
+* **services:** add UserService find and findOne which removes password field ([994c370](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/994c37045a2b94a67807768311eec4b101e18313))
+* **UserEntity:** add role ([88ad053](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/88ad05358a1c3f7024360b64807071f7912cca45))
+* **userRoute:** add / and /current endpoints to user route ([42324c5](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/42324c5d0f0c8d9bd0e15fcf776144c5f6fc3637))
+
 ## [0.1.1](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.1.0...v0.1.1) (2020-10-05)
 
 
