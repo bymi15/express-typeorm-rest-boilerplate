@@ -65,4 +65,14 @@ export default class JobApplicationService extends CRUD<JobApplication> {
     await this.fillCompany(job);
     return job;
   }
+
+  async update(
+    id: string,
+    jobApplication: JobApplication
+  ): Promise<JobApplication> {
+    const job = await super.update(id, jobApplication);
+    await this.fillUser(job);
+    await this.fillCompany(job);
+    return job;
+  }
 }
