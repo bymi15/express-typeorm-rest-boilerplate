@@ -45,7 +45,7 @@ export class JobApplication {
       this.company = data.company;
       this.user = data.user;
       this.status = data.status;
-      this.appliedDate = data.appliedDate || new Date().toISOString();
+      this.appliedDate = data.appliedDate;
       this.updatedAt = new Date().toISOString();
     }
   }
