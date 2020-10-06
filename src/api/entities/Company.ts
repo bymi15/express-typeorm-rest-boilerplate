@@ -33,9 +33,6 @@ export class Company {
   @IsNumberString()
   foundedYear?: string;
 
-  @Column()
-  createdAt?: string;
-
   public constructor(data?: Company) {
     if (data) {
       this.name = data.name;
@@ -45,7 +42,6 @@ export class Company {
       this.headquarters = data.headquarters;
       this.industry = data.industry;
       this.foundedYear = data.foundedYear;
-      this.createdAt = new Date().toISOString();
     }
   }
 }
