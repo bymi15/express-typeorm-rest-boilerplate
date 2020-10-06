@@ -1,3 +1,25 @@
+# [0.3.0](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.2.0...v0.3.0) (2020-10-06)
+
+
+### Bug Fixes
+
+* **CRUD:** fix update bug with fill ([d9a1658](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/d9a1658e4a35992c3ea07325f77135775bdba440))
+* **Generator:** add missing export route code ([b6dede6](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/b6dede6d37eff6b32d1b3faea8c79b518c8464b9))
+* **jest:** jest run in series instead of parallel ([57d0c6f](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/57d0c6fe57abf77f20c17946d3bab6defebafdd7))
+* **JobApplication:** remove default appliedDate causing bug in update ([45ab09e](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/45ab09e161aca7caa000a0f088f21b0bd4fd7fb1))
+* **ormconfig.js:** fix TS_NODE env not set ([7e615d6](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/7e615d6fe2c10cd7b26c5ba0517d5cdeae9049ee))
+
+
+### Features
+
+* **CRUD:** add fillObjectIdField function ([319588c](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/319588cbd1e196f7157fb26436db497ad01f576e))
+* **factories:** add JobApplication factory ([510b0a5](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/510b0a5e0ca49afea796ca8f703003a54f581f5e))
+* **JobApplication:** add JobApplication entity ([a3b2d86](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/a3b2d861270a29776e2ca3e7673ec17b70a58604))
+* **jobApplicationRoute:** add jobApplication endpoints ([41b4dcb](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/41b4dcbab86eb72d690c738fd44458e8cba438f7))
+* **JobApplicationService:** add update function ([0bebf19](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/0bebf19b3c2f3a8568f5011e76e0659fc31b63b5))
+* **seeds:** add JobApplication seed ([cc72beb](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/cc72beb9b28a23841e3f791881dcc3925349bfa2))
+* **services:** add JobApplication service ([80afac2](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/80afac28a518435116b1a103c6bbcd242cd9a4ec))
+
 # [0.2.0](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.1.1...v0.2.0) (2020-10-06)
 
 
