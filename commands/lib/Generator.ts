@@ -222,9 +222,9 @@ export default class Generator {
       `    const ${camelCase(
         pluralizeLastWord(this.entityName)
       )} = await ${camelCase(this.entityName)}ServiceInstance.find();\n` +
-      `    return res.json({ ${camelCase(
+      `    return res.json(${camelCase(
         pluralizeLastWord(this.entityName)
-      )} }).status(200);\n` +
+      )}).status(200);\n` +
       '  } catch (e) {\n' +
       '    return next(e);\n' +
       '  }\n' +
@@ -242,7 +242,7 @@ export default class Generator {
       `    const ${camelCase(this.entityName)} = await ${camelCase(
         this.entityName
       )}ServiceInstance.findOne(req.params.id);\n` +
-      `    return res.json({ ${camelCase(this.entityName)} }).status(200);\n` +
+      `    return res.json(${camelCase(this.entityName)}).status(200);\n` +
       '  } catch (e) {\n' +
       '    return next(e);\n' +
       '  }\n' +
@@ -284,9 +284,7 @@ export default class Generator {
       )}ServiceInstance.create(\n` +
       `        new ${this.entityName}(req.body)\n` +
       '      );\n' +
-      `      return res.json({ ${camelCase(
-        this.entityName
-      )} }).status(201);\n` +
+      `      return res.json(${camelCase(this.entityName)}).status(201);\n` +
       '    } catch (e) {\n' +
       '      return next(e);\n' +
       '    }\n' +
@@ -307,9 +305,7 @@ export default class Generator {
       `        req.params.id,\n` +
       `        new ${this.entityName}(req.body)\n` +
       '      );\n' +
-      `      return res.json({ ${camelCase(
-        this.entityName
-      )} }).status(200);\n` +
+      `      return res.json(${camelCase(this.entityName)}).status(200);\n` +
       '    } catch (e) {\n' +
       '      return next(e);\n' +
       '    }\n' +
