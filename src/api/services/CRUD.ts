@@ -59,7 +59,7 @@ export default class CRUD<Entity> {
   }
 
   async update(id: string | ObjectID, newEntity: Entity): Promise<Entity> {
-    const entity = await this.findOne(id);
+    const entity = await this.repo.findOne(id);
     if (!entity) throw new Error('The id is invalid');
     Object.keys(newEntity).forEach((key) => {
       if (newEntity[key]) {
