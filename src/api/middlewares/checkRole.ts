@@ -1,10 +1,10 @@
 import { Container } from 'typedi';
 import { Logger } from 'winston';
-import { Response, NextFunction, Request } from 'express';
-import { User } from '../entities/User';
+import { Response, NextFunction, Request, RequestHandler } from 'express';
+import { User, Role } from '../entities/User';
 import UserService from '../services/UserService';
 
-const attachUser = async (
+const checkRole = (role: Role): RequestHandler => async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -16,12 +16,14 @@ const attachUser = async (
     if (!userEntity) {
       return res.sendStatus(401);
     }
-    req.currentUser = userEntity;
+    if (!userEntity.hasAccessTo(role)) {
+      return res.sendStatus(403);
+    }
     return next();
   } catch (e) {
-    logger.error('Error attaching user to req: %o', e);
+    logger.error('Error checking user role: %o', e);
     return next(e);
   }
 };
 
-export default attachUser;
+export default checkRole;

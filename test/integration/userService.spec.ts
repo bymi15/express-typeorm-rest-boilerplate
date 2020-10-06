@@ -115,4 +115,26 @@ describe('UserService', () => {
       expect(err).toEqual(new Error('Invalid email or password'));
     });
   });
+
+  describe('find', () => {
+    test('Should find all users', async () => {
+      await userSeed.seedMany(5);
+      const response = await userServiceInstance.find();
+
+      expect(response).toBeDefined();
+      expect(response.length).toEqual(5);
+      expect(response[0].password).toBeUndefined();
+    });
+  });
+
+  describe('findOne', () => {
+    test('Should find a user by id', async () => {
+      const user = await userSeed.seedOne();
+      const response = await userServiceInstance.findOne(user.id);
+
+      expect(response).toBeDefined();
+      expect(response.email).toEqual(user.email);
+      expect(response.password).toBeUndefined();
+    });
+  });
 });
