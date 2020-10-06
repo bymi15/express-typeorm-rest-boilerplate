@@ -12,11 +12,10 @@ const attachUser = async (
   const logger: Logger = Container.get('logger');
   try {
     const userService = Container.get(UserService);
-    const userEntity: User = await userService.getRepo().findOne(req.token.id);
+    const userEntity: User = await userService.findOne(req.token.id);
     if (!userEntity) {
       return res.sendStatus(401);
     }
-    Reflect.deleteProperty(userEntity, 'password');
     req.currentUser = userEntity;
     return next();
   } catch (e) {
