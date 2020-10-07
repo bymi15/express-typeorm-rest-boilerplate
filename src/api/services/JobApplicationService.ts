@@ -61,8 +61,10 @@ export default class JobApplicationService extends CRUD<JobApplication> {
 
   async findOne(id: string): Promise<JobApplication | undefined> {
     const job = await super.findOne(id);
-    await this.fillUser(job);
-    await this.fillCompany(job);
+    if (job) {
+      await this.fillUser(job);
+      await this.fillCompany(job);
+    }
     return job;
   }
 
@@ -71,8 +73,10 @@ export default class JobApplicationService extends CRUD<JobApplication> {
     jobApplication: JobApplication
   ): Promise<JobApplication> {
     const job = await super.update(id, jobApplication);
-    await this.fillUser(job);
-    await this.fillCompany(job);
+    if (job) {
+      await this.fillUser(job);
+      await this.fillCompany(job);
+    }
     return job;
   }
 }
