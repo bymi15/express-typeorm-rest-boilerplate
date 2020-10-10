@@ -7,6 +7,7 @@ import Logger from '../logger';
 import config from '../config';
 import { ValidationError } from 'class-validator';
 import { isCelebrateError } from 'celebrate';
+import { ErrorHandler, handleError } from '../helpers/ErrorHandler';
 
 export default (app: Application): void => {
   // Health Check endpoints
@@ -55,18 +56,11 @@ export default (app: Application): void => {
     }
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
-    Logger.error('Error: %o', err.message);
-    if (err.name === 'UnauthorizedError') {
-      /**
-       * Handle 401 thrown by express-jwt library
-       */
-      return res.status(401).json({ error: err.message });
-    } else {
-      return res.status(500).json({
-        error: err.message,
-      });
+  app.use(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    (err: ErrorHandler, _req: Request, res: Response, _next: NextFunction) => {
+      Logger.error('Error: %o', err.message);
+      handleError(err, res);
     }
-  });
+  );
 };

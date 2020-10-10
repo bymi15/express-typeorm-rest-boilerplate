@@ -9,7 +9,7 @@ import { Logger } from 'winston';
 import { IUserInputDTO, IUserResponseDTO } from '../../types';
 import { validate } from 'class-validator';
 import CRUD from './CRUD';
-import { ErrorHandler } from 'src/helpers/ErrorHandler';
+import { ErrorHandler } from '../../helpers/ErrorHandler';
 
 @Service()
 export default class UserService extends CRUD<User> {

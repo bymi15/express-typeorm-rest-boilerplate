@@ -2,7 +2,7 @@ import { Service } from 'typedi';
 import { MongoRepository, ObjectID } from 'typeorm';
 import { Logger } from 'winston';
 import { validate } from 'class-validator';
-import { ErrorHandler } from 'src/helpers/ErrorHandler';
+import { ErrorHandler } from '../../helpers/ErrorHandler';
 
 @Service()
 export default class CRUD<Entity> {
