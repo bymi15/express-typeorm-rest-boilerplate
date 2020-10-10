@@ -10,8 +10,7 @@
     "mongodb": "mkdirp .mongodb && mongod --dbpath .mongodb",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test:unix": "NODE_ENV=test TS_NODE=true jest --runInBand",
-    "test": "set NODE_ENV=test&set TS_NODE=true&jest --runInBand",
+    "test": "cross-env NODE_ENV=test TS_NODE=true jest --runInBand",
     "seed": "ts-node -T commands/seed.ts",
     "generate": "ts-node -T commands/generate.ts",
     "semantic-release": "semantic-release"
@@ -79,6 +78,7 @@
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "commander": "^6.1.0",
+    "cross-env": "^7.0.2",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
