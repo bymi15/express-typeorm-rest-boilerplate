@@ -9,6 +9,7 @@ import { Logger } from 'winston';
 import { IUserInputDTO, IUserResponseDTO } from '../../types';
 import { validate } from 'class-validator';
 import CRUD from './CRUD';
+import { ErrorHandler } from '../../helpers/ErrorHandler';
 
 @Service()
 export default class UserService extends CRUD<User> {
@@ -40,10 +41,11 @@ export default class UserService extends CRUD<User> {
     if (errors.length > 0) throw errors;
 
     const foundUser = await this.userRepo.findOne({ email: newUser.email });
-    if (foundUser) throw new Error('The email address already exists');
+    if (foundUser)
+      throw new ErrorHandler(400, 'The email address already exists');
 
     const userRecord: User = await this.userRepo.save(newUser);
-    if (!userRecord) throw new Error('User cannot be created');
+    if (!userRecord) throw new ErrorHandler(500, 'User cannot be created');
 
     const token = this.generateToken(userRecord);
     const user = userRecord;
@@ -54,7 +56,7 @@ export default class UserService extends CRUD<User> {
   async login(email: string, password: string): Promise<IUserResponseDTO> {
     this.logger.debug('Authenticating user...');
     const userRecord = await this.userRepo.findOne({ email });
-    if (!userRecord) throw new Error('Invalid email or password');
+    if (!userRecord) throw new ErrorHandler(401, 'Invalid email or password');
 
     const validPassword = await bcrypt.compare(password, userRecord.password);
 
@@ -64,7 +66,7 @@ export default class UserService extends CRUD<User> {
       Reflect.deleteProperty(user, 'password');
       return { user, token };
     }
-    throw new Error('Invalid email or password');
+    throw new ErrorHandler(401, 'Invalid email or password');
   }
 
   generateToken(userRecord: User): string {

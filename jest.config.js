@@ -21,4 +21,7 @@ module.exports = {
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
+
+  // Timeout of a test in milliseconds.
+  testTimeout: 10000,
 };
