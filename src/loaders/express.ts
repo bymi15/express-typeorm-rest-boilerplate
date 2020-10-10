@@ -6,6 +6,7 @@ import apiRoutes from '../api/routes';
 import Logger from '../logger';
 import config from '../config';
 import { ValidationError } from 'class-validator';
+import { isCelebrateError } from 'celebrate';
 
 export default (app: Application): void => {
   // Health Check endpoints
@@ -31,7 +32,10 @@ export default (app: Application): void => {
 
   /// Error handlers
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    if (err instanceof Array && err[0] instanceof ValidationError) {
+    if (isCelebrateError(err)) {
+      Logger.error('Error: %o', err);
+      res.status(400).json({ error: 'Invalid data' }).end();
+    } else if (err instanceof Array && err[0] instanceof ValidationError) {
       const messageArr: Array<string> = [];
       let e: ValidationError;
       for (e of err) {
@@ -41,6 +45,11 @@ export default (app: Application): void => {
       }
       Logger.error('Error: %o', messageArr);
       res.status(400).json({ errors: messageArr }).end();
+    } else if (err.name === 'UnauthorizedError') {
+      /**
+       * Handle 401 thrown by express-jwt library
+       */
+      return res.status(401).json({ error: err.message });
     } else {
       next(err);
     }
