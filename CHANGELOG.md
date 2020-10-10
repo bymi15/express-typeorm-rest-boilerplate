@@ -1,3 +1,19 @@
+# [0.4.0](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.3.0...v0.4.0) (2020-10-10)
+
+
+### Bug Fixes
+
+* **app:** separate app and server for e2e testing ([a6d2cbb](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/a6d2cbb197a03809312b2a453c198450e9b8d757))
+* **ErrorHandler:** fix imports and add error handler in express loader ([5571f23](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/5571f2357eb120cc566bb1474c6ea1193ba9a362))
+* **expressLoader:** add celebrate validation error handler ([f8421bc](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/f8421bca2d2168ee13a2082a5d8c6ee9d31dd526))
+* **JobApplicationFactory:** fix ObjectID bug with typeorm ([8878c14](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/8878c14391d0915bfaf2c0ee3b2517143d73c88e))
+* **services:** add undefined check for JobApplication service ([604c195](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/604c19568523dc3a21475658f55eacd2be141e46))
+
+
+### Features
+
+* **ErrorHandler:** add custom error handler with status code ([d742c3e](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/d742c3ec08ba9de6dc06174a10c2e0154cb82d63))
+
 # [0.3.0](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.2.0...v0.3.0) (2020-10-06)
 
 
