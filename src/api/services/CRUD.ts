@@ -2,6 +2,7 @@ import { Service } from 'typedi';
 import { MongoRepository, ObjectID } from 'typeorm';
 import { Logger } from 'winston';
 import { validate } from 'class-validator';
+import { ErrorHandler } from 'src/helpers/ErrorHandler';
 
 @Service()
 export default class CRUD<Entity> {
@@ -23,14 +24,17 @@ export default class CRUD<Entity> {
     fieldEntityService: CRUD<any>
   ): Promise<void> {
     const entityName = entity.constructor.name;
-    if (!entity) throw new Error(`${entityName} not found`);
+    if (!entity) throw new ErrorHandler(500, `${entityName} not found`);
     if (!(fieldName in entity))
-      throw new Error(`${fieldName} does not exist in ${entityName}`);
+      throw new ErrorHandler(
+        500,
+        `${fieldName} does not exist in ${entityName}`
+      );
     entity[fieldName] = await fieldEntityService.findOne(
       <ObjectID>entity[fieldName]
     );
     if (!entity[fieldName]) {
-      throw new Error(`Invalid ${fieldName}`);
+      throw new ErrorHandler(500, `Invalid ${fieldName}`);
     }
   }
 
@@ -44,7 +48,10 @@ export default class CRUD<Entity> {
         [identifier]: entity[identifier],
       }));
     if (foundEntity)
-      throw new Error(`The ${entity.constructor.name} already exists`);
+      throw new ErrorHandler(
+        400,
+        `The ${entity.constructor.name} already exists`
+      );
 
     if (errors.length > 0) throw errors;
     return await this.repo.save(entity);
@@ -60,7 +67,7 @@ export default class CRUD<Entity> {
 
   async update(id: string | ObjectID, newEntity: Entity): Promise<Entity> {
     const entity = await this.repo.findOne(id);
-    if (!entity) throw new Error('The id is invalid');
+    if (!entity) throw new ErrorHandler(500, 'The id is invalid');
     Object.keys(newEntity).forEach((key) => {
       if (newEntity[key]) {
         entity[key] = newEntity[key];
