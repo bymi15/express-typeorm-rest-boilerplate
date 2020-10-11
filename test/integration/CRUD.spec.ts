@@ -48,7 +48,7 @@ describe('CRUD', () => {
 
     test('Should fail to create an entity if the value for the provided identifier already exists', async () => {
       const existingCompany = await entitySeed.seedOne();
-      let err: Error, response: Company;
+      let err: ErrorHandler, response: Company;
       try {
         response = await crudInstance.create(existingCompany, 'name');
       } catch (e) {
@@ -56,7 +56,10 @@ describe('CRUD', () => {
       }
       expect(response).toBeUndefined();
       expect(err).toEqual(
-        new Error(`The ${existingCompany.constructor.name} already exists`)
+        new ErrorHandler(
+          400,
+          `The ${existingCompany.constructor.name} already exists`
+        )
       );
     });
   });
@@ -85,7 +88,7 @@ describe('CRUD', () => {
 
     test('Should not return an error with an invalid id', async () => {
       const mockCompanyId = '22dba00215a1568fe9310409';
-      let err: Error, response: Company;
+      let err: ErrorHandler, response: Company;
       try {
         response = await crudInstance.findOne(mockCompanyId);
       } catch (e) {
@@ -119,7 +122,7 @@ describe('CRUD', () => {
       const mockCompanyId = '22dba00215a1568fe9310409';
       const mockCompany = CompanyFactory();
 
-      let err: Error, response: Company;
+      let err: ErrorHandler, response: Company;
       try {
         response = await crudInstance.update(mockCompanyId, mockCompany);
       } catch (e) {
@@ -135,7 +138,7 @@ describe('CRUD', () => {
       const mockCompany = await entitySeed.seedOne();
       const response = await crudInstance.delete(mockCompany.id.toHexString());
       expect(response).toBeUndefined();
-      let err: Error, res: Company;
+      let err: ErrorHandler, res: Company;
       try {
         res = await crudInstance.findOne(mockCompany.id.toHexString());
       } catch (e) {

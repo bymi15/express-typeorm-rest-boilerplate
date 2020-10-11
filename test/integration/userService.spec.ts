@@ -8,6 +8,7 @@ import Logger from '../../src/logger';
 import { User } from '../../src/api/entities/User';
 import EntitySeeder from '../../src/database/seeds/EntitySeed';
 import UserFactory from '../../src/database/factories/UserFactory';
+import { ErrorHandler } from '../../src/helpers/ErrorHandler';
 jest.mock('../../src/logger');
 
 describe('UserService', () => {
@@ -61,14 +62,16 @@ describe('UserService', () => {
         email: mockUser.email,
         password: faker.random.word(),
       };
-      let err: Error, response: IUserResponseDTO;
+      let err: ErrorHandler, response: IUserResponseDTO;
       try {
         response = await userServiceInstance.register(mockUserInput);
       } catch (e) {
         err = e;
       }
       expect(response).toBeUndefined();
-      expect(err).toEqual(new Error('The email address already exists'));
+      expect(err).toEqual(
+        new ErrorHandler(400, 'The email address already exists')
+      );
     });
   });
 
@@ -98,7 +101,7 @@ describe('UserService', () => {
         password: mockPassword,
       });
 
-      let err: Error, response: IUserResponseDTO;
+      let err: ErrorHandler, response: IUserResponseDTO;
       try {
         response = await userServiceInstance.login(
           mockUser.email,
@@ -108,7 +111,7 @@ describe('UserService', () => {
         err = e;
       }
       expect(response).toBeUndefined();
-      expect(err).toEqual(new Error('Invalid email or password'));
+      expect(err).toEqual(new ErrorHandler(401, 'Invalid email or password'));
     });
   });
 
@@ -126,7 +129,7 @@ describe('UserService', () => {
   describe('findOne', () => {
     test('Should find a user by id', async () => {
       const user = await userSeed.seedOne();
-      const response = await userServiceInstance.findOne(user.id);
+      const response = await userServiceInstance.findOne(user.id.toHexString());
 
       expect(response).toBeDefined();
       expect(response.email).toEqual(user.email);

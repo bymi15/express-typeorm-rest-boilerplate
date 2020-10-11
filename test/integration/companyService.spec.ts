@@ -6,6 +6,7 @@ import Logger from '../../src/logger';
 import CompanyFactory from '../../src/database/factories/CompanyFactory';
 import { Company } from '../../src/api/entities/Company';
 import EntitySeed from '../../src/database/seeds/EntitySeed';
+import { ErrorHandler } from '../../src/helpers/ErrorHandler';
 jest.mock('../../src/logger');
 
 describe('CompanyService', () => {
@@ -46,14 +47,14 @@ describe('CompanyService', () => {
 
     test('Should fail to create a company record if the company name already exists', async () => {
       const existingCompany = await companySeed.seedOne();
-      let err: Error, response: Company;
+      let err: ErrorHandler, response: Company;
       try {
         response = await companyServiceInstance.create(existingCompany);
       } catch (e) {
         err = e;
       }
       expect(response).toBeUndefined();
-      expect(err).toEqual(new Error('The Company already exists'));
+      expect(err).toEqual(new ErrorHandler(400, 'The Company already exists'));
     });
   });
 });
