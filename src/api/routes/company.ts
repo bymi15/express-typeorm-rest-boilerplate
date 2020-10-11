@@ -4,7 +4,7 @@ import { celebrate, Joi } from 'celebrate';
 import CompanyService from '../services/CompanyService';
 import { Logger } from 'winston';
 import { Company } from '../entities/Company';
-import { isAuth } from '../middlewares';
+import { checkRole, isAuth } from '../middlewares';
 
 const route = Router();
 
@@ -33,7 +33,7 @@ route.get('/:id', isAuth, async (req, res, next) => {
   }
 });
 
-route.delete('/:id', isAuth, async (req, res, next) => {
+route.delete('/:id', isAuth, checkRole('staff'), async (req, res, next) => {
   const companyId = req.params.id;
   const logger: Logger = Container.get('logger');
   logger.debug(
@@ -52,6 +52,7 @@ route.delete('/:id', isAuth, async (req, res, next) => {
 route.post(
   '/',
   isAuth,
+  checkRole('staff'),
   celebrate({
     body: Joi.object({
       name: Joi.string().required(),
@@ -84,6 +85,7 @@ route.post(
 route.put(
   '/:id',
   isAuth,
+  checkRole('staff'),
   celebrate({
     body: Joi.object({
       name: Joi.string(),
