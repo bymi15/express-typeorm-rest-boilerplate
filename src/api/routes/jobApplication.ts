@@ -51,7 +51,7 @@ route.delete('/:id', isAuth, attachUser, async (req, res, next) => {
       .user as User;
     if (!jobUser.id.equals(req.currentUser.id)) return res.sendStatus(403);
     await jobApplicationServiceInstance.delete(req.params.id);
-    return res.json({}).status(204);
+    return res.status(204).end();
   } catch (e) {
     return next(e);
   }

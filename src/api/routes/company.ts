@@ -43,7 +43,7 @@ route.delete('/:id', isAuth, async (req, res, next) => {
   try {
     const companyServiceInstance = Container.get(CompanyService);
     await companyServiceInstance.delete(companyId);
-    return res.json({}).status(204);
+    return res.status(204).end();
   } catch (e) {
     return next(e);
   }

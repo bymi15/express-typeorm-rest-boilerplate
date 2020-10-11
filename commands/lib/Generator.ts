@@ -260,7 +260,7 @@ export default class Generator {
       `    await ${camelCase(
         this.entityName
       )}ServiceInstance.delete(req.params.id);\n` +
-      `    return res.json({}).status(204);\n` +
+      `    return res.status(204).end();\n` +
       '  } catch (e) {\n' +
       '    return next(e);\n' +
       '  }\n' +
