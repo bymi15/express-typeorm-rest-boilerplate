@@ -126,7 +126,7 @@ describe('CRUD', () => {
         err = e;
       }
       expect(response).toBeUndefined();
-      expect(err).toEqual(new Error(`The id is invalid`));
+      expect(err).toEqual(new ErrorHandler(500, 'The id is invalid'));
     });
   });
 
