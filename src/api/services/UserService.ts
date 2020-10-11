@@ -92,7 +92,7 @@ export default class UserService extends CRUD<User> {
     return users;
   }
 
-  async findOne(id: string | ObjectID): Promise<User | undefined> {
+  async findOne(id: string): Promise<User | undefined> {
     const user = await this.repo.findOne(id);
     if (user) {
       Reflect.deleteProperty(user, 'password');
