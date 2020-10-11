@@ -260,7 +260,7 @@ export default class Generator {
       `    await ${camelCase(
         this.entityName
       )}ServiceInstance.delete(req.params.id);\n` +
-      `    return res.json({}).status(204);\n` +
+      `    return res.status(204).end();\n` +
       '  } catch (e) {\n' +
       '    return next(e);\n' +
       '  }\n' +
@@ -348,6 +348,7 @@ export default class Generator {
     `import ${this.entityName}Factory from '../../src/database/factories/${this.entityName}Factory';\n` +
     `import { ${this.entityName} } from '../../src/api/entities/${this.entityName}';\n` +
     "import EntitySeed from '../../src/database/seeds/EntitySeed';\n" +
+    "import { ErrorHandler } from '../../src/helpers/ErrorHandler';\n" +
     "jest.mock('../../src/logger');\n" +
     '\n' +
     `describe('${this.entityName}Service', () => {\n` +
@@ -408,7 +409,7 @@ export default class Generator {
     `      const existing${this.entityName} = await ${camelCase(
       this.entityName
     )}Seed.seedOne();\n` +
-    `      let err: Error, response: ${this.entityName};\n` +
+    `      let err: ErrorHandler, response: ${this.entityName};\n` +
     '      try {\n' +
     `        response = await ${camelCase(
       this.entityName
@@ -417,7 +418,7 @@ export default class Generator {
     '        err = e;\n' +
     '      }\n' +
     '      expect(response).toBeUndefined();\n' +
-    `      expect(err).toEqual(new Error('The ${this.entityName} already exists'));\n` +
+    `      expect(err).toEqual(new ErrorHandler(400, 'The ${this.entityName} already exists'));\n` +
     '    });\n' +
     '  });\n' +
     '});\n';

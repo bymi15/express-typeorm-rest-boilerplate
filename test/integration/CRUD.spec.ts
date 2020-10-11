@@ -7,6 +7,7 @@ import CompanyFactory from '../../src/database/factories/CompanyFactory';
 import { Company } from '../../src/api/entities/Company';
 import CRUD from '../../src/api/services/CRUD';
 import EntitySeed from '../../src/database/seeds/EntitySeed';
+import { ErrorHandler } from '../../src/helpers/ErrorHandler';
 jest.mock('../../src/logger');
 
 describe('CRUD', () => {
@@ -47,7 +48,7 @@ describe('CRUD', () => {
 
     test('Should fail to create an entity if the value for the provided identifier already exists', async () => {
       const existingCompany = await entitySeed.seedOne();
-      let err: Error, response: Company;
+      let err: ErrorHandler, response: Company;
       try {
         response = await crudInstance.create(existingCompany, 'name');
       } catch (e) {
@@ -55,7 +56,10 @@ describe('CRUD', () => {
       }
       expect(response).toBeUndefined();
       expect(err).toEqual(
-        new Error(`The ${existingCompany.constructor.name} already exists`)
+        new ErrorHandler(
+          400,
+          `The ${existingCompany.constructor.name} already exists`
+        )
       );
     });
   });
@@ -82,11 +86,16 @@ describe('CRUD', () => {
       expect(response).toEqual(mockCompanies[0]);
     });
 
-    test('Should not return a value with an invalid id', async () => {
+    test('Should not return an error with an invalid id', async () => {
       const mockCompanyId = '22dba00215a1568fe9310409';
-      const response = await crudInstance.findOne(mockCompanyId);
-
+      let err: ErrorHandler, response: Company;
+      try {
+        response = await crudInstance.findOne(mockCompanyId);
+      } catch (e) {
+        err = e;
+      }
       expect(response).toBeUndefined();
+      expect(err).toEqual(new ErrorHandler(404, 'Not found'));
     });
   });
 
@@ -113,14 +122,14 @@ describe('CRUD', () => {
       const mockCompanyId = '22dba00215a1568fe9310409';
       const mockCompany = CompanyFactory();
 
-      let err: Error, response: Company;
+      let err: ErrorHandler, response: Company;
       try {
         response = await crudInstance.update(mockCompanyId, mockCompany);
       } catch (e) {
         err = e;
       }
       expect(response).toBeUndefined();
-      expect(err).toEqual(new Error(`The id is invalid`));
+      expect(err).toEqual(new ErrorHandler(500, 'The id is invalid'));
     });
   });
 
@@ -128,11 +137,15 @@ describe('CRUD', () => {
     test('Should delete an entity if id exists', async () => {
       const mockCompany = await entitySeed.seedOne();
       const response = await crudInstance.delete(mockCompany.id.toHexString());
-      const foundCompany = await crudInstance.findOne(
-        mockCompany.id.toHexString()
-      );
       expect(response).toBeUndefined();
-      expect(foundCompany).toBeUndefined();
+      let err: ErrorHandler, res: Company;
+      try {
+        res = await crudInstance.findOne(mockCompany.id.toHexString());
+      } catch (e) {
+        err = e;
+      }
+      expect(res).toBeUndefined();
+      expect(err).toEqual(new ErrorHandler(404, 'Not found'));
     });
   });
 });

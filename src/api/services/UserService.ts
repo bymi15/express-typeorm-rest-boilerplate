@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import config from '../../config';
 import { Inject, Service } from 'typedi';
 import { User } from '../entities/User';
-import { MongoRepository, ObjectID } from 'typeorm';
+import { MongoRepository } from 'typeorm';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import { Logger } from 'winston';
 import { IUserInputDTO, IUserResponseDTO } from '../../types';
@@ -92,7 +92,7 @@ export default class UserService extends CRUD<User> {
     return users;
   }
 
-  async findOne(id: string | ObjectID): Promise<User | undefined> {
+  async findOne(id: string): Promise<User | undefined> {
     const user = await this.repo.findOne(id);
     if (user) {
       Reflect.deleteProperty(user, 'password');
