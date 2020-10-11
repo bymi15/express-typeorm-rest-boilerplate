@@ -1,3 +1,14 @@
+## [0.4.1](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.4.0...v0.4.1) (2020-10-11)
+
+
+### Bug Fixes
+
+* **CRUD:** make id strictly type string ([2378d4a](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/2378d4a86c24dd6fca8f0fcc6a89a950c2d630a8))
+* **routes:** add checkRole('staff') middleware for delete,post,put endpoints ([b3a98bf](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/b3a98bf2b61b61038adec90ede5a2cbfd9054f9d))
+* **routes:** refactor delete route status code to 204 ([56bdf83](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/56bdf83560030d0fcab1abb8fb978a7b13b46f0f))
+* **UserFactory:** add user role ([6a026f7](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/6a026f78cea5bb520ff2e6bb7e9c1789beb03b30))
+* **UserService:** refactor id param to be strictly of type string ([fee0993](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/fee099380fc45d5f1312319e795723f031d600ff))
+
 # [0.4.0](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.3.0...v0.4.0) (2020-10-10)
 
 
