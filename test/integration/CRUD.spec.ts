@@ -7,6 +7,7 @@ import CompanyFactory from '../../src/database/factories/CompanyFactory';
 import { Company } from '../../src/api/entities/Company';
 import CRUD from '../../src/api/services/CRUD';
 import EntitySeed from '../../src/database/seeds/EntitySeed';
+import { ErrorHandler } from '../../src/helpers/ErrorHandler';
 jest.mock('../../src/logger');
 
 describe('CRUD', () => {
@@ -82,11 +83,16 @@ describe('CRUD', () => {
       expect(response).toEqual(mockCompanies[0]);
     });
 
-    test('Should not return a value with an invalid id', async () => {
+    test('Should not return an error with an invalid id', async () => {
       const mockCompanyId = '22dba00215a1568fe9310409';
-      const response = await crudInstance.findOne(mockCompanyId);
-
+      let err: Error, response: Company;
+      try {
+        response = await crudInstance.findOne(mockCompanyId);
+      } catch (e) {
+        err = e;
+      }
       expect(response).toBeUndefined();
+      expect(err).toEqual(new ErrorHandler(404, 'Not found'));
     });
   });
 
@@ -128,11 +134,15 @@ describe('CRUD', () => {
     test('Should delete an entity if id exists', async () => {
       const mockCompany = await entitySeed.seedOne();
       const response = await crudInstance.delete(mockCompany.id.toHexString());
-      const foundCompany = await crudInstance.findOne(
-        mockCompany.id.toHexString()
-      );
       expect(response).toBeUndefined();
-      expect(foundCompany).toBeUndefined();
+      let err: Error, res: Company;
+      try {
+        res = await crudInstance.findOne(mockCompany.id.toHexString());
+      } catch (e) {
+        err = e;
+      }
+      expect(res).toBeUndefined();
+      expect(err).toEqual(new ErrorHandler(404, 'Not found'));
     });
   });
 });
