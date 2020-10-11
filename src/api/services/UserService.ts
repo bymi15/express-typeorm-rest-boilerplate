@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import config from '../../config';
 import { Inject, Service } from 'typedi';
 import { User } from '../entities/User';
-import { MongoRepository, ObjectID } from 'typeorm';
+import { MongoRepository } from 'typeorm';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 import { Logger } from 'winston';
 import { IUserInputDTO, IUserResponseDTO } from '../../types';
