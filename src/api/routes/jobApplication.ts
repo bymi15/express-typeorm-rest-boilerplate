@@ -22,7 +22,7 @@ route.get('/', isAuth, async (req, res, next) => {
   }
 });
 
-route.get('/:id', isAuth, async (req, res, next) => {
+route.get('/:id', isAuth, attachUser, async (req, res, next) => {
   const logger: Logger = Container.get('logger');
   logger.debug(
     'Calling GET to /jobApplication/:id endpoint with id: %s',
@@ -33,6 +33,8 @@ route.get('/:id', isAuth, async (req, res, next) => {
     const jobApplication = await jobApplicationServiceInstance.findOne(
       req.params.id
     );
+    const jobUser = jobApplication.user as User;
+    if (!jobUser.id.equals(req.currentUser.id)) return res.sendStatus(403);
     return res.json(jobApplication).status(200);
   } catch (e) {
     return next(e);
