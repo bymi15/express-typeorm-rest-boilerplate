@@ -102,34 +102,37 @@ describe('CRUD', () => {
   describe('update', () => {
     test('Should update an entity with a valid id', async () => {
       const mockCompany = await entitySeed.seedOne();
-      const updateCompany = new Company({
+      const mockUpdatedFields = {
         name: 'updatedCompanyName',
         description: 'updatedCompanyDescription',
-      });
+      };
 
       const response = await crudInstance.update(
         mockCompany.id.toHexString(),
-        updateCompany
+        mockUpdatedFields
       );
 
       expect(response).toBeDefined();
-      expect(response.name).toEqual(updateCompany.name);
-      expect(response.description).toEqual(updateCompany.description);
+      expect(response.name).toEqual(mockUpdatedFields.name);
+      expect(response.description).toEqual(mockUpdatedFields.description);
       expect(response.industry).toEqual(mockCompany.industry);
     });
 
     test('Should fail and return an error with an invalid id', async () => {
       const mockCompanyId = '22dba00215a1568fe9310409';
-      const mockCompany = CompanyFactory();
+      const mockUpdatedFields = {
+        name: 'updatedCompanyName',
+        description: 'updatedCompanyDescription',
+      };
 
       let err: ErrorHandler, response: Company;
       try {
-        response = await crudInstance.update(mockCompanyId, mockCompany);
+        response = await crudInstance.update(mockCompanyId, mockUpdatedFields);
       } catch (e) {
         err = e;
       }
       expect(response).toBeUndefined();
-      expect(err).toEqual(new ErrorHandler(500, 'The id is invalid'));
+      expect(err).toEqual(new ErrorHandler(404, 'Not found'));
     });
   });
 

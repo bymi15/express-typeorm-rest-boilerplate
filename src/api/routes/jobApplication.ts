@@ -7,6 +7,7 @@ import { JobApplication } from '../entities/JobApplication';
 import { attachUser, isAuth } from '../middlewares';
 import { User } from '../entities/User';
 import CompanyService from '../services/CompanyService';
+import { ObjectID } from 'typeorm';
 
 const route = Router();
 
@@ -16,13 +17,13 @@ route.get('/', isAuth, async (req, res, next) => {
   try {
     const jobApplicationServiceInstance = Container.get(JobApplicationService);
     const jobApplications = await jobApplicationServiceInstance.find();
-    return res.json(jobApplications).status(200);
+    return res.status(200).json(jobApplications);
   } catch (e) {
     return next(e);
   }
 });
 
-route.get('/:id', isAuth, async (req, res, next) => {
+route.get('/:id', isAuth, attachUser, async (req, res, next) => {
   const logger: Logger = Container.get('logger');
   logger.debug(
     'Calling GET to /jobApplication/:id endpoint with id: %s',
@@ -33,7 +34,9 @@ route.get('/:id', isAuth, async (req, res, next) => {
     const jobApplication = await jobApplicationServiceInstance.findOne(
       req.params.id
     );
-    return res.json(jobApplication).status(200);
+    const jobUser = jobApplication.user as User;
+    if (!jobUser.id.equals(req.currentUser.id)) return res.sendStatus(403);
+    return res.status(200).json(jobApplication);
   } catch (e) {
     return next(e);
   }
@@ -87,7 +90,7 @@ route.post(
       const jobApplication = await jobApplicationServiceInstance.create(
         new JobApplication(req.body)
       );
-      return res.json(jobApplication).status(201);
+      return res.status(201).json(jobApplication);
     } catch (e) {
       return next(e);
     }
@@ -116,15 +119,21 @@ route.put(
       const jobApplicationServiceInstance = Container.get(
         JobApplicationService
       );
-      const jobUser = (
-        await jobApplicationServiceInstance.findOne(req.params.id)
-      ).user as User;
-      if (!jobUser.id.equals(req.currentUser.id)) return res.sendStatus(403);
+      const job = await jobApplicationServiceInstance
+        .getRepo()
+        .findOne(req.params.id);
+      if (!job) return res.sendStatus(500);
+      if (
+        req.currentUser.role !== 'admin' &&
+        !(job.user as ObjectID).equals(req.currentUser.id)
+      ) {
+        return res.sendStatus(403);
+      }
       const jobApplication = await jobApplicationServiceInstance.update(
         req.params.id,
-        new JobApplication(req.body)
+        req.body
       );
-      return res.json(jobApplication).status(200);
+      return res.status(200).json(jobApplication);
     } catch (e) {
       return next(e);
     }
