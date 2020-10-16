@@ -109,10 +109,7 @@ route.put(
     );
     try {
       const companyServiceInstance = Container.get(CompanyService);
-      const company = await companyServiceInstance.update(
-        companyId,
-        new Company(req.body)
-      );
+      const company = await companyServiceInstance.update(companyId, req.body);
       return res.status(200).json(company);
     } catch (e) {
       return next(e);
