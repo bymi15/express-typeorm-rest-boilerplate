@@ -1,3 +1,11 @@
+## [0.4.2](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.4.1...v0.4.2) (2020-10-16)
+
+
+### Bug Fixes
+
+* **CRUD:** fix update CRUD method ([31a79a4](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/31a79a4bdd977119a9636afcc764193bd573a565))
+* **jobApplicationRoute:** fix /:id endpoint by adding object permission ([446f31c](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/446f31c52b14137475ac0ce2f0c02f013c85ac13))
+
 ## [0.4.1](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.4.0...v0.4.1) (2020-10-11)
 
 
