@@ -1,8 +1,8 @@
 <h1 align="center">Express TypeORM REST API Boilerplate</h1>
 
 <p align="center">
-  <a href="https://david-dm.org/bymi15/express-typeorm-rest-boilerplate" title="dependencies status">
-    <img src="https://david-dm.org/bymi15/express-typeorm-rest-boilerplate/status.svg?style=flat-square"/>
+  <a href="https://sonarcloud.io/dashboard?id=bymi15_express-typeorm-rest-boilerplate">
+      <img src="https://sonarcloud.io/api/project_badges/measure?project=bymi15_express-typeorm-rest-boilerplate&metric=alert_status" alt="Quality Gate Status" />
   </a>
   <a href="https://travis-ci.com/github/bymi15/express-typeorm-rest-boilerplate">
     <img src="https://api.travis-ci.com/bymi15/express-typeorm-rest-boilerplate.svg?branch=main" alt="travis" />
