@@ -78,7 +78,7 @@ export default class CRUD<Entity> {
       throw new ErrorHandler(404, 'Not found');
     }
     Object.keys(updatedFields).forEach((key) => {
-      if (!!updatedFields[key] && _.has(entity, key)) {
+      if (!!updatedFields[key]) {
         entity[key] = updatedFields[key];
       }
     });

@@ -97,6 +97,8 @@ npm run dev
 
 ### Running MongoDB locally
 
+For this step you need to install [MongoDB Server](https://www.mongodb.com/try/download/community)
+
 - Run `npm run mongodb` to start a local MongoDB server with it's data stored in `.mongodb` in the root directory.
 - This is very useful for unit / integration testing.
 - It's always a good idea to use a separate database for testing.

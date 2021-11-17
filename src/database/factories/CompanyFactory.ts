@@ -1,8 +1,8 @@
-import { Company } from '../../api/entities/Company';
 import * as faker from 'faker';
+import { Company } from '../../api/entities/Company';
 
 export default (data?: Company): Company => {
-  const company = new Company({
+  return new Company({
     name: (data && data.name) || faker.company.companyName(),
     description: (data && data.description) || faker.company.catchPhrase(),
     logo: (data && data.logo) || faker.image.business(),
@@ -15,5 +15,4 @@ export default (data?: Company): Company => {
     foundedYear:
       (data && data.foundedYear) || faker.date.past().getFullYear().toString(),
   });
-  return company;
 };
