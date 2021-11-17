@@ -1,13 +1,13 @@
 import bodyParser from 'body-parser';
-import cors from 'cors';
-import helmet from 'helmet';
-import { Application, NextFunction, Request, Response } from 'express';
-import apiRoutes from '../api/routes';
-import Logger from '../logger';
-import config from '../config';
-import { ValidationError } from 'class-validator';
 import { isCelebrateError } from 'celebrate';
+import { ValidationError } from 'class-validator';
+import cors from 'cors';
+import { Application, NextFunction, Request, Response } from 'express';
+import helmet from 'helmet';
+import apiRoutes from '../api/routes';
+import config from '../config';
 import { ErrorHandler, handleError } from '../helpers/ErrorHandler';
+import Logger from '../logger';
 
 export default (app: Application): void => {
   // Health Check endpoints
@@ -40,7 +40,7 @@ export default (app: Application): void => {
       const messageArr: Array<string> = [];
       let e: ValidationError;
       for (e of err) {
-        Object.values(e.constraints).map((msg: string) => {
+        Object.values(e.constraints).forEach((msg: string) => {
           messageArr.push(msg);
         });
       }
