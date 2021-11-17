@@ -1,3 +1,11 @@
+## [0.4.3](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.4.2...v0.4.3) (2021-11-17)
+
+
+### Bug Fixes
+
+* **CRUD:** fix update function ([a95ad55](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/a95ad550746483649d387162d18bd41df03ace5f))
+* **express:** replace map with foreach ([3338f60](https://github.com/bymi15/express-typeorm-rest-boilerplate/commit/3338f60a9b6fb66ddbb1b14648b01fce69a7bc17))
+
 ## [0.4.2](https://github.com/bymi15/express-typeorm-rest-boilerplate/compare/v0.4.1...v0.4.2) (2020-10-16)
 
 
