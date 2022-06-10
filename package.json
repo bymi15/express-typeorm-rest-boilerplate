@@ -90,7 +90,7 @@
     "nodemon": "^2.0.4",
     "pluralize": "^8.0.0",
     "prettier": "^2.1.2",
-    "semantic-release": "^17.1.2",
+    "semantic-release": "^19.0.3",
     "supertest": "^5.0.0",
     "ts-jest": "^26.4.0",
     "ts-node": "^9.0.0",
