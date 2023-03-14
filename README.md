@@ -1,3 +1,6 @@
+> **Warning**<br/>
+> This project is no longer being actively maintained and is therefore likely to be outdated.
+
 <h1 align="center">Express TypeORM REST API Boilerplate</h1>
 
 <p align="center">
